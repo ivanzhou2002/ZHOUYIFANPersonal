@@ -937,25 +937,322 @@
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5em; }
-            h2 { font-size: 1.8em; }
-            p { font-size: 1em; }
-            .education-card {
-                flex-direction: column;
-                text-align: center;
+            /* 导航栏优化 */
+            .navbar {
+                height: 60px;
+                padding: 0;
             }
-            .education-card:hover {
-                transform: translateY(-5px);
+            .nav-container {
+                justify-content: flex-start;
+                overflow-x: auto;
+                width: 100%;
+                padding: 0 20px;
+                gap: 20px;
+                -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+                height: 100%;
             }
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            .nav-container::-webkit-scrollbar {
+                display: none; /* 隐藏滚动条 */
             }
+            .nav-container a {
+                flex-shrink: 0;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+            .nav-container .logo {
+                position: sticky;
+                left: 0;
+                z-index: 10;
+                margin-right: 10px;
+                padding-right: 15px;
+                /* 背景色与导航栏一致，防止滚动时文字重叠 */
+                background: rgba(0, 0, 0, 0.9); 
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            /* 字体大小调整 */
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.6em; }
+            p { font-size: 1em; text-align: justify; }
+            
+            /* 隐藏右侧导航点 */
             .nav-dots {
-                right: 15px;
+                display: none;
             }
-            .contact-info {
+
+            /* Section padding 调整 */
+            section {
+                padding-top: 80px !important;
+                height: auto !important; /* 强制高度自适应，防止内容截断 */
+                min-height: 100vh;
+                padding-bottom: 50px;
+            }
+            #section2 {
+                padding-bottom: 50px;
+                min-height: auto;
+            }
+            
+            /* 修复 Section 4 高度问题 */
+            #section4 {
+                height: auto !important;
+                padding-bottom: 50px;
+            }
+
+            /* 个人信息卡片 */
+            .personal-info {
+                width: 100%;
+                padding: 20px;
+                margin-top: 30px;
+            }
+
+            /* 教育经历卡片 */
+            .education-grid {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                gap: 20px;
+                margin-top: 30px;
+            }
+            .education-card {
+                display: flex;
                 flex-direction: column;
                 align-items: center;
+                text-align: center;
+                padding: 20px;
+                width: 100%;
+                box-sizing: border-box;
+                height: auto;
+                background: rgba(255, 255, 255, 0.1) !important; /* 确保背景色可见 */
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .education-card img {
+                margin-bottom: 15px;
+                width: 80px;
+                height: 80px;
+                flex-shrink: 0;
+            }
+            .education-card .info {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .education-card h3 {
+                font-size: 1.3em;
+                margin-bottom: 8px;
+                white-space: normal;
+                word-wrap: break-word;
+                color: #fff !important;
+                opacity: 1 !important;
+            }
+            .education-card p {
+                font-size: 1em;
+                margin-bottom: 8px;
+                white-space: normal;
+                word-wrap: break-word;
+                color: rgba(255, 255, 255, 0.9) !important;
+                opacity: 1 !important;
+            }
+            .education-card .date {
+                font-size: 0.9em;
+                margin-bottom: 12px;
+                color: rgba(255, 255, 255, 0.7) !important;
+                opacity: 1 !important;
+            }
+            .education-card .view-grades {
+                padding: 8px 20px;
+                font-size: 0.9em;
+                margin-top: 5px;
+                display: inline-block;
+                opacity: 1 !important;
+            }
+
+            /* 证书展示优化 - 移动端网格布局 */
+            .certificates-grid {
+                padding: 10px 0; /* 移除左右内边距 */
+                gap: 15px; /* 增加间距 */
+                flex-wrap: wrap; /* 允许换行 */
+                overflow: visible; /* 移除滚动条 */
+                justify-content: center; /* 居中显示 */
+                display: grid; /* 使用 Grid 布局 */
+                grid-template-columns: repeat(2, 1fr); /* 强制双列 */
+            }
+            .certificate-card {
+                min-width: 0; /* 允许缩小 */
+                max-width: none; /* 移除最大宽度限制 */
+                width: 100%; /* 占满网格单元 */
+                padding: 15px;
+                gap: 10px;
+                margin: 0; /* 移除可能的外边距 */
+                box-sizing: border-box;
+            }
+            .certificate-card .logo {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 8px;
+            }
+            .certificate-card h4 {
+                font-size: 0.9em;
+                line-height: 1.3;
+                min-height: 2.6em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                white-space: normal; /* 允许标题换行 */
+            }
+            .certificate-card .description {
+                font-size: 0.8em;
+                display: none;
+            }
+            .certificate-card .view-btn {
+                padding: 5px 12px;
+                font-size: 0.75em;
+                margin-top: 5px;
+            }
+
+            /* 职业经历 - 重新布局 */
+            .experience-item {
+                flex-direction: column;
+                padding: 25px;
+                gap: 20px;
+            }
+            .experience-item .left-section {
+                width: 100%;
+                display: grid;
+                grid-template-columns: auto 1fr;
+                grid-template-rows: auto auto auto;
+                column-gap: 15px;
+                align-items: center;
+                text-align: left;
+                padding-bottom: 15px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .experience-item .company-logo {
+                grid-row: 1 / span 3;
+                margin-bottom: 0;
+                width: 60px;
+                height: 60px;
+            }
+            .experience-item .left-section .company-name {
+                grid-column: 2;
+                text-align: left;
+                font-size: 1.1em;
+            }
+            .experience-item .left-section .company {
+                grid-column: 2;
+                text-align: left;
+            }
+            .experience-item .left-section .date {
+                grid-column: 2;
+                justify-self: start;
+                margin-top: 5px;
+            }
+            .experience-item .right-section ul {
+                padding-left: 15px;
+            }
+
+            /* 项目卡片 */
+            .project-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+                gap: 15px;
+                height: auto;
+            }
+            .project-card h3 {
+                white-space: normal;
+                font-size: 1.2em;
+            }
+            .project-card p {
+                white-space: normal;
+                flex: 0 0 auto;
+            }
+            .project-card .view-btn {
+                margin-top: 10px;
+                width: 100%;
+                text-align: center;
+            }
+
+            /* 技能分类 */
+            .skill-category {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+            .skill-category h3 {
+                justify-content: center;
+                text-align: center;
+            }
+            .skill-category h3::after {
+                display: none;
+            }
+            .skill-category-content {
+                justify-content: center;
+            }
+
+            /* 语言技能 */
+            .language-skills {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .language-skills h3::after {
+                display: none;
+            }
+
+            /* 联系方式 */
+            .contact-info {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .contact-item {
+                width: 100%;
+                max-width: none;
+            }
+
+            /* Section 2 滚动特效在手机端简化 */
+            #section2 .content.is-fixed,
+            #section2 .content.is-at-bottom {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                width: 100% !important;
+            }
+            
+            /* 技能卡片网格 */
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            /* 移动端禁用所有动画 */
+            *,
+            h1, h2, p,
+            .personal-info,
+            .education-grid,
+            .certificates-section,
+            .experience-timeline,
+            .projects-grid,
+            .contact-info,
+            .skill-category,
+            .language-skills {
+                animation: none !important;
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            
+            /* 保持导航栏和交互元素的必要过渡 */
+            .nav-container a,
+            .view-btn,
+            .education-card,
+            .project-card,
+            .skill-card {
+                transition: transform 0.2s ease, background 0.2s ease !important;
             }
         }
     </style>
@@ -1412,6 +1709,19 @@
                 return;
             }
 
+            // 移动端禁用视差滚动和固定效果
+            if (window.innerWidth <= 768) {
+                section2Content.classList.remove('is-fixed');
+                section2Content.classList.remove('is-at-bottom');
+                section2Content.style.top = '';
+                if (section2Placeholder) {
+                    section2Placeholder.style.height = '0px';
+                }
+                section2Background.style.opacity = '1';
+                section2Background.style.height = '100%';
+                return;
+            }
+
             const sectionTop = section2.offsetTop;
             const sectionHeight = section2.offsetHeight;
             const windowHeight = window.innerHeight;
@@ -1691,4 +2001,3 @@
     </script>
 </body>
 </html>
-jiyu
