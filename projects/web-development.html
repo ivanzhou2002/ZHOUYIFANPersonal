@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网页产品开发 - 周奕帆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            margin-bottom: 40px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .projects-list {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .project-item .role {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .project-item .description {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .project-item .tech-stack {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .project-item .tech-stack .tech-labels {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .project-item .tech-stack strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .project-item .tech-stack span {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 15px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .project-item .link-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #6d5824 0%, #493c19 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            border: 1px solid rgba(218, 165, 32, 0.5);
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .project-item .link-btn:hover {
+            background: linear-gradient(135deg, #5f5741 99%, #6e6531 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(218, 165, 32, 0.4);
+        }
+
+        .project-item .feature-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .project-item .feature-item {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            border-left: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .project-item .feature-title {
+            font-size: 1.05em;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .project-item .feature-content {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .intro {
+                font-size: 1em;
+            }
+            .project-item {
+                padding: 25px;
+            }
+            .project-item .feature-list {
+                grid-template-columns: 1fr;
+            }
+            .project-item .tech-stack {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-btn">← 返回主页</a>
+        
+        <h1>网页产品开发</h1>
+        <p class="intro">
+            从0到1构建完整的Web应用程序，包括前端界面设计、后端逻辑实现和数据库集成。
+            注重用户体验和交互设计，运用现代前端框架和技术栈，打造高性能、响应式的网页应用。
+        </p>
+
+        <div class="projects-list">
+            <div class="project-item">
+                <h3>KPL数据分析平台</h3>
+                <p class="role">独立开发者 | 全栈开发</p>
+                <p class="description">
+                    基于市场分析构建了一个面向 KPL（王者荣耀职业联赛）的专业级数据分析平台，实现5,586场历史比赛数据的可视化展示。
+                    包含队伍分析、对手分析与全局大数据三大模块，为电竞从业人员和爱好者提供更为专业的数据分析工具。同时根据用户反馈迭代，完善敏捷开发流程。
+                </p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-title">核心客户</span>
+                        <p class="feature-content">战队分析师、电竞内容创作者、资深观众和电竞爱好者</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <span class="feature-title">核心价值</span>
+                        <p class="feature-content">围绕队伍深度分析、对手对比、联赛大数据核心产品模块提供结构化的战术洞察</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <span class="feature-title">先天优势</span>
+                        <p class="feature-content">本人曾参与采访KPL电竞行业从业人员，拥有深刻行业洞察和人脉</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <span class="feature-title">开发工具</span>
+                        <p class="feature-content">Python，Vibe Coding</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <span class="feature-title">可持续性</span>
+                        <p class="feature-content">低成本（几乎无成本）运营</p>
+                    </div>
+                </div>
+                
+                <div class="tech-stack">
+                    <div class="tech-labels">
+                        <strong>技术栈：</strong>
+                        <span>市场分析</span>
+                        <span>敏捷开发</span>
+                    </div>
+                    <div class="tech-labels">
+                        <strong>点击访问该网页产品：</strong>
+                        <a href="https://ivanzhou2002.github.io/WZRYKPLdata/" target="_blank" class="link-btn">国际访问链接</a>
+                        <a href="https://ab8.site/ZHOUivan02WZRYdata/index.html" target="_blank" class="link-btn">国内访问链接</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>自动化邮件生成工具</h3>
+                <p class="role">独立开发者 | 工具开发</p>
+                <p class="description">
+                    利用 Vibe Coding 技术开发基于 Excel 的自动化邮件生成工具，可自动提取数据、调用邮件模板并生成格式化邮件，减少团队重复处理流程。
+                </p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-title">核心用户</span>
+                        <p class="feature-content">Golin公关北京团队</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <span class="feature-title">核心价值</span>
+                        <p class="feature-content">自动化邮件生成，大幅减少重复工作</p>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <span class="feature-title">开发工具</span>
+                        <p class="feature-content">Python，Vibe Coding，Excel</p>
+                    </div>
+                </div>
+                
+                <div class="tech-stack">
+                    <div class="tech-labels">
+                        <strong>技术栈：</strong>
+                        <span>Python</span>
+                        <span>Vibe Coding</span>
+                        <span>Excel自动化</span>
+                        <span>邮件API</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>静态网站开发项目</h3>
+                <p class="role">前端开发 | 网页设计</p>
+                <p class="description">
+                    开发多个响应式静态网站，包括个人网站、在线作品集等。
+                    注重页面加载速度、SEO优化和跨浏览器兼容性。
+                </p>
+                <div class="tech-stack">
+                    <div class="tech-labels">
+                        <strong>技术栈：</strong>
+                        <span>HTML/CSS</span>
+                        <span>响应式设计</span>
+                        <span>搜索引擎优化</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻/评论 - 周奕帆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            margin-bottom: 40px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .projects-list {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .project-item .role {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .project-item .description {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .project-item .tech-stack {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-item .tech-stack strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .project-item .tech-stack span {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 15px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .skills-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .skills-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .skill-card h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .skill-card p {
+            font-size: 0.95em;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .intro {
+                font-size: 1em;
+            }
+            .project-item {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-btn">← 返回主页</a>
+        
+        <h1>✍️ 新闻/评论</h1>
+        <p class="intro">
+            基于新闻学专业知识，撰写深度报道和评论文章，传递有价值的信息和观点。
+            关注社会热点，深入挖掘事实真相，用专业的视角解读复杂现象。
+        </p>
+
+        <div class="projects-list">
+            <div class="project-item">
+                <h3>郑州暴雨专题报道</h3>
+                <p class="role">实习记者 | 深度报道</p>
+                <p class="description">
+                    参与郑州暴雨灾害的专题报道采访工作，深入一线收集素材。
+                    产出多篇新闻作品，及时传递灾情信息和救援进展，展现了媒体人的责任与担当。
+                </p>
+                <div class="tech-stack">
+                    <strong>关键能力：</strong>
+                    <span>深度采访</span>
+                    <span>现场报道</span>
+                    <span>新闻写作</span>
+                    <span>事实核查</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>东京夏季奥运会报道</h3>
+                <p class="role">实习记者 | 体育新闻</p>
+                <p class="description">
+                    参与东京夏季奥运会期间的相关报道工作，关注运动员表现和赛事热点。
+                    通过多角度的报道，为读者呈现奥运会的精彩瞬间和背后的故事。
+                </p>
+                <div class="tech-stack">
+                    <strong>关键能力：</strong>
+                    <span>体育新闻</span>
+                    <span>赛事报道</span>
+                    <span>人物专访</span>
+                    <span>新闻策划</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>"江西之声"公众号运营</h3>
+                <p class="role">新媒体运营 | 内容创作</p>
+                <p class="description">
+                    运营"江西之声"官方微信公众号，发布原创推文20余篇。
+                    结合热点话题和本地特色，创作有深度、有温度的新闻内容，提升账号影响力。
+                </p>
+                <div class="tech-stack">
+                    <strong>关键能力：</strong>
+                    <span>新媒体运营</span>
+                    <span>内容策划</span>
+                    <span>公众号管理</span>
+                    <span>粉丝互动</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>"江西新闻广播"抖音短视频创作</h3>
+                <p class="role">短视频创作者 | 视频新闻</p>
+                <p class="description">
+                    运营"江西新闻广播"抖音账号，发布短视频作品5条，累计获赞2000+。
+                    将传统新闻内容转化为短视频形式，适应新媒体传播特点，扩大传播范围。
+                </p>
+                <div class="tech-stack">
+                    <strong>关键能力：</strong>
+                    <span>短视频制作</span>
+                    <span>视频剪辑</span>
+                    <span>新闻可视化</span>
+                    <span>流量运营</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>新闻评论文章创作</h3>
+                <p class="role">评论员 | 时事评论</p>
+                <p class="description">
+                    基于新闻学专业背景，撰写多篇时政和社会热点的评论文章。
+                    以独特的视角分析事件背后的深层逻辑，为读者提供有价值的观点和思考。
+                </p>
+                <div class="tech-stack">
+                    <strong>关键能力：</strong>
+                    <span>评论写作</span>
+                    <span>时政分析</span>
+                    <span>观点提炼</span>
+                    <span>逻辑思维</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="skills-section">
+            <h3>技能专长</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>新闻写作</h4>
+                    <p>消息写作, 深度报道, 特稿写作, 评论文章</p>
+                </div>
+                <div class="skill-card">
+                    <h4>采访技巧</h4>
+                    <p>深度访谈, 人物专访, 现场采访, 新闻调查</p>
+                </div>
+                <div class="skill-card">
+                    <h4>新媒体运营</h4>
+                    <p>公众号运营, 抖音运营, 内容策划, 粉丝管理</p>
+                </div>
+                <div class="skill-card">
+                    <h4>视频制作</h4>
+                    <p>短视频创作, 视频剪辑, 视频新闻, 直播运营</p>
+                </div>
+                <div class="skill-card">
+                    <h4>新闻策划</h4>
+                    <p>专题策划, 栏目策划, 热点追踪, 选题策划</p>
+                </div>
+                <div class="skill-card">
+                    <h4>媒体素养</h4>
+                    <p>新闻伦理, 事实核查, 媒体法规, 职业操守</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

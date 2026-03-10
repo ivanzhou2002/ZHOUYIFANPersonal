@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视觉设计 - 周奕帆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            margin-bottom: 40px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .skills-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .skills-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .skill-card h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .skill-card p {
+            font-size: 0.95em;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .portfolio-section {
+            margin-bottom: 60px;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .portfolio-item .subtitle {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .portfolio-item .description {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .portfolio-item .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .portfolio-item .image-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-item .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item .image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item .download-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .portfolio-item .download-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .intro {
+                font-size: 1em;
+            }
+            .portfolio-item {
+                padding: 25px;
+            }
+            .portfolio-item .image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-btn">← 返回主页</a>
+        
+        <h1>视觉设计</h1>
+        <p class="intro">
+            注重用户体验的界面设计，结合美学原则和功能性要求，打造出色的视觉呈现。
+            从色彩搭配到排版布局，从交互设计到品牌视觉，创造美观且实用的设计作品。
+        </p>
+
+        <div class="skills-section">
+            <h3>技能专长</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>UI设计</h4>
+                    <p>界面布局, 组件设计, 设计系统</p>
+                </div>
+                <div class="skill-card">
+                    <h4>色彩与排版</h4>
+                    <p>配色方案, 字体设计, 排版布局</p>
+                </div>
+                <div class="skill-card">
+                    <h4>交互设计</h4>
+                    <p>用户交互, 动效设计, 用户体验</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-section">
+            <div class="portfolio-item">
+                <h2> 大疆主题设计</h2>
+                <p class="subtitle">界面设计</p>
+                <div class="image-grid">
+                    <div class="image-item">
+                        <img src="ppt/1.png" alt="KPL数据分析平台设计 - 主页">
+                    </div>
+                    <div class="image-item">
+                        <img src="ppt/1.1.png" alt="KPL数据分析平台设计 - 仪表盘">
+                    </div>
+                    <div class="image-item">
+                        <img src="ppt/1.2.png" alt="KPL数据分析平台设计 - 数据图表">
+                    </div>
+                    <div class="image-item">
+                        <img src="ppt/1.3.png" alt="KPL数据分析平台设计 - 交互组件">
+                    </div>
+                    <div class="image-item">
+                        <img src="ppt/1.4.png" alt="KPL数据分析平台设计 - 细节展示">
+                    </div>
+                </div>
+                <a href="ppt/1.pptx" class="download-btn" download>下载完整设计文件 (PPTX)</a>
+            </div>
+
+            <div class="portfolio-item">
+                <h2>喜茶产品设计</h2>
+                <p class="subtitle">数据设计师 | 信息图表</p>
+                <div class="image-grid">
+                    <div class="image-item">
+                        <img src="ppt/2.png" alt="数据可视化图表设计 - 概览">
+                    </div>
+                    <div class="image-item">
+                        <img src="ppt/2.1.png" alt="数据可视化图表设计 - 图表类型">
+                    </div>
+                    <div class="image-item">
+                        <img src="ppt/2.2.png" alt="数据可视化图表设计 - 交互效果">
+                    </div>
+                </div>
+                <a href="ppt/2.pdf" class="download-btn" download>下载完整设计文档 (PDF)</a>
+            </div>
+
+            <div class="portfolio-item">
+                <h2>太古品牌设计</h2>
+                <p class="subtitle">品牌设计师 | VI设计</p>
+                <div class="image-grid">
+                    <div class="image-item">
+                        <img src="ppt/3.png" alt="品牌视觉系统设计 - Logo展示">
+                    </div>
+                    <div class="image-item">
+                        <img src="ppt/3.1.png" alt="品牌视觉系统设计 - 设计系统">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

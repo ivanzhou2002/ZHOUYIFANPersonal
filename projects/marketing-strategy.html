@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市场策划 - 周奕帆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            margin-bottom: 40px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .projects-list {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-item.with-image {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .project-item-content {
+            flex: 1;
+        }
+
+        .project-item-right {
+            flex: 0 0 auto;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-item-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .image-caption {
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .project-item .role {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .project-item .description {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .project-item .tech-stack {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-item .tech-stack strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .project-item .tech-stack span {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 15px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .project-details {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            display: grid;
+            grid-template-columns: 0.75fr 1fr;
+            gap: 20px;
+        }
+
+        .detail-section {
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .detail-section:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .detail-section h4 {
+            font-size: 1.2em;
+            color: #fff;
+            margin-bottom: 16px;
+            font-weight: 600;
+            display: block;
+        }
+
+        .detail-section.compact {
+            padding: 16px 24px;
+        }
+
+        .detail-section.compact h4 {
+            font-size: 1.1em;
+            margin-bottom: 12px;
+        }
+
+        .detail-section.compact .sub-tags {
+            gap: 8px;
+        }
+
+        .detail-section.compact .tag {
+            padding: 6px 14px;
+            font-size: 0.8em;
+        }
+
+        .detail-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .research-methods {
+            grid-column: 1 / -1;
+            width: 100%;
+        }
+
+        .tag-group {
+            margin-bottom: 8px;
+        }
+
+        .tag-label {
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 6px;
+            display: block;
+            font-weight: 500;
+        }
+
+        .sub-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .tag:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .insight-tag {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .insight-tag:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .insight-label {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .insight-value {
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.4;
+        }
+
+        .skills-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .skills-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .skill-card h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .skill-card p {
+            font-size: 0.95em;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .intro {
+                font-size: 1em;
+            }
+            .project-item {
+                padding: 25px;
+            }
+            .project-item.with-image {
+                flex-direction: column;
+            }
+            .project-item-right {
+                max-width: 100%;
+            }
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+            .detail-column {
+                gap: 15px;
+            }
+            .sub-tags {
+                gap: 8px;
+            }
+            .tag {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+            .detail-section {
+                padding: 18px;
+            }
+            .detail-section h4 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-btn">← 返回主页</a>
+        
+        <h1>市场策划</h1>
+        <p class="intro">
+            基于市场调研和消费者洞察，制定整合营销策略，提升品牌价值和市场份额。
+            结合数据分析和创意策划，为企业提供全方位的市场解决方案。
+        </p>
+
+        <div class="projects-list">
+            <div class="project-item with-image">
+                <div class="project-item-content">
+                    <h3>太古糖145周年庆方案策划</h3>
+                    <p class="role">市场策划 | 整合营销</p>
+                    <p class="description">
+                        基于数据挖掘与情感分析提出“一撕无”与"情绪疗愈"的品牌策略，设计全渠道整合营销与CSR创新方案。
+                        通过多维度市场分析，为品牌定位和传播策略提供数据支撑。
+                    </p>
+                    
+                    <div class="project-details">
+                        <div class="detail-column">
+                            <div class="detail-section compact">
+                                <h4>服务客户</h4>
+                                <div class="sub-tags">
+                                    <span class="tag">Swire集团 太古糖业香港 Marketing部门</span>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-section compact">
+                                <h4>市场洞察</h4>
+                                <div class="sub-tags">
+                                    <div class="insight-tag">
+                                        <span class="insight-label">消费逻辑</span>
+                                        <span class="insight-value">高压力驱动甜食消费</span>
+                                    </div>
+                                    <div class="insight-tag">
+                                        <span class="insight-label">决策路径</span>
+                                        <span class="insight-value">线上优先</span>
+                                    </div>
+                                    <div class="insight-tag">
+                                        <span class="insight-label">品牌认知</span>
+                                        <span class="insight-value">传统+功能性</span>
+                                    </div>
+                                    <div class="insight-tag">
+                                        <span class="insight-label">分享逻辑</span>
+                                        <span class="insight-value">轻量分享</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-column">
+                            <div class="detail-section">
+                                <h4>策略建议</h4>
+                                <div class="tag-group">
+                                    <span class="tag-label">品牌建议</span>
+                                    <div class="sub-tags">
+                                        <span class="tag">太古+情绪疗愈品牌策略</span>
+                                    </div>
+                                </div>
+                                <div class="tag-group">
+                                    <span class="tag-label">落地建议1：全渠道营销活动</span>
+                                    <div class="sub-tags">
+                                        <span class="tag">快闪活动</span>
+                                        <span class="tag">店内POSM</span>
+                                        <span class="tag">H5互动页面</span>
+                                    </div>
+                                </div>
+                                <div class="tag-group">
+                                    <span class="tag-label">落地建议2：CSR活动</span>
+                                    <div class="sub-tags">
+                                        <span class="tag">"Sweetness in Paw"（动物保护）</span>
+                                        <span class="tag">"Sweetness in Palm"（情绪关怀）</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-section research-methods">
+                            <h4>研究方法</h4>
+                            <div class="tag-group">
+                                <span class="tag-label">a. 定性研究</span>
+                                <div class="sub-tags">
+                                    <span class="tag">焦点小组访谈</span>
+                                    <span class="tag">半结构式访谈法</span>
+                                    <span class="tag">9人样本</span>
+                                </div>
+                            </div>
+                            <div class="tag-group">
+                                <span class="tag-label">b. 定量研究</span>
+                                <div class="sub-tags">
+                                    <span class="tag">问卷调查</span>
+                                    <span class="tag">回归分析</span>
+                                    <span class="tag">345人样本</span>
+                                    <span class="tag">香港+中国内地</span>
+                                </div>
+                            </div>
+                            <div class="tag-group">
+                                <span class="tag-label">c. 网络数据研究</span>
+                                <div class="sub-tags">
+                                    <span class="tag">社会语义网络分析</span>
+                                    <span class="tag">词频词云图</span>
+                                    <span class="tag">情感分析</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item-right">
+                    <div class="project-item-image">
+                        <img src="taikoo.jpg" alt="太古糖IMC方案策划">
+                    </div>
+                    <div class="tech-stack">
+                        <strong>个人贡献：</strong>
+                        <span>网络数据爬虫</span>
+                        <span>平面设计</span>
+                        <span>基于RostCM6工具的语义分析</span>
+                        <span>品牌策划</span>
+                        <span>面向客户的方案展示</span>
+                    </div>
+                    <div class="project-item-image">
+                        <img src="145周年活动方案.jpg" alt="项目图片2">
+                        <p class="image-caption">145周年活动方案</p>
+                    </div>
+                    <div class="project-item-image">
+                        <img src="CSR.jpg" alt="项目图片3">
+                        <p class="image-caption">CSR物料</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>企业公关与社交媒体整合营销</h3>
+                <p class="role">公关策划 | 社媒运营</p>
+                <p class="description">
+                    服务世界知名航空公司、汽车制造公司等国际品牌，统筹企业公关与社交媒体整合营销。
+                    负责全球新闻稿的本地化改编与对外发布，独立产出微信内容并协助运营微博、小红书等社交平台。
+                </p>
+                <div class="tech-stack">
+                    <strong>关键技能：</strong>
+                    <span>企业公关</span>
+                    <span>社交媒体运营</span>
+                    <span>KOL合作</span>
+                    <span>内容策划</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3>走马闻故——走马古镇旅游市场开发（融媒体角度）</h3>
+                <p class="role">创意策划 | 品牌传播 | 互联网+创新创业大赛项目</p>
+                <p class="description">
+                    参与走马古镇旅游开发项目，基于“茶马古道”民间传说设计短视频内容作为体验入口，打造以探店打卡为核心的轻量化旅游体验路径，提升古镇在年轻群体中的吸引力与到访意愿。
+                </p>
+                <div class="tech-stack">
+                    <strong>关键技能：</strong>
+                    <span>品牌传播</span>
+                    <span>视频策划</span>
+                    <span>内容创作</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="skills-section">
+            <h3>技能专长</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>市场调研</h4>
+                    <p>问卷调查, 深度访谈, 数据分析, 消费者洞察</p>
+                </div>
+                <div class="skill-card">
+                    <h4>产品开发</h4>
+                    <p>需求调研, 产品设计, 敏捷开发, 差异化竞争</p>
+                </div>
+                <div class="skill-card">
+                    <h4>品牌策略</h4>
+                    <p>品牌定位, 品牌传播, 品牌管理, 差异化竞争</p>
+                </div>
+                <div class="skill-card">
+                    <h4>整合营销</h4>
+                    <p>IMC策略, 多渠道营销, 全案策划, 效果评估</p>
+                </div>
+                <div class="skill-card">
+                    <h4>公关传播</h4>
+                    <p>企业公关, 危机公关, 媒体关系, 新闻稿撰写</p>
+                </div>
+                <div class="skill-card">
+                    <h4>社媒运营</h4>
+                    <p>微博, 微信, 小红书, KOL合作, 社群管理</p>
+                </div>
+                <div class="skill-card">
+                    <h4>内容创作</h4>
+                    <p>文案策划, 视频脚本, 图文设计, 创意产出</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
