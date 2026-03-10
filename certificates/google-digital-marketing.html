@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>谷歌 数字营销和电子商务证书 - 周奕帆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 40px 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .header .subtitle {
+            font-size: 1em;
+            color: rgba(255,255, 255, 0.5);
+        }
+
+        .certificate-info {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .certificate-info h3 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-item .label {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-item .value {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .download-btn {
+            display: block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+
+        .download-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .pdf-container {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .pdf-container iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 20px;
+            }
+            .container {
+                padding: 80px 20px 20px;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .pdf-container iframe {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../index.html" class="back-link">
+            ← 返回主页
+        </a>
+        <a href="../index.html" class="logo">IVAN</a>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>谷歌 数字营销和电子商务</h1>
+            <p>数字营销专业证书</p>
+            <p class="subtitle">Google Professional Certificate</p>
+        </div>
+
+        <div class="certificate-info">
+            <h3>证书信息</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="label">课程平台</div>
+                    <div class="value">Coursera</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">授课机构</div>
+                    <div class="value">Google</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">证书类型</div>
+                    <div class="value">数字营销专业证书</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">学习状态</div>
+                    <div class="value">已完成</div>
+                </div>
+            </div>
+        </div>
+
+        <a href="../网络学习证书/谷歌 数字营销和电子商务/Coursera 7JBMIU08LQHP.pdf" download="周奕帆_谷歌数字营销和电子商务证书.pdf" class="download-btn">
+            下载证书 PDF
+        </a>
+
+        <div class="pdf-container">
+            <iframe src="../网络学习证书/谷歌 数字营销和电子商务/Coursera 7JBMIU08LQHP.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+        </div>
+    </div>
+</body>
+</html>
