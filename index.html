@@ -172,11 +172,20 @@
         }
 
         #section3 {
+            /* 项目板块 */
+            padding-top: 150px; /* 增加上间距 */
+            padding-bottom: 100px; /* 增加下间距 */
+            margin-bottom: 300px
+        }
+
+        #section4 {
+            /* 教育板块 */
             align-items: flex-start;
             padding-top: 100px;
         }
 
-        #section4 {
+        #section5 {
+            /* 职业板块 */
             height: 200vh;
             align-items: flex-start;
             padding-top: 100px;
@@ -186,9 +195,10 @@
             min-height: 100vh;
             display: block;
             padding-top: 120px;
-            padding-bottom: 160vh;
+            padding-bottom: 100vh; /* 减少原来的 160vh，避免过度拉长 */
             background: #000;
             overflow: hidden;
+            margin-bottom: 300px; /* 增加与下方 Section 3 的物理间距 */
         }
 
         #section2 .content {
@@ -304,16 +314,21 @@
             z-index: 1;
         }
 
+        /* 专门加深 Section 3 的蒙版亮度 */
+        #section3 .overlay {
+            background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 7%, rgba(0, 0, 0, 0.178) 15%, rgb(0, 0, 0) 60%);
+        }
+
         #section3 .parallax-bg {
-            background-image: url('images/skills-bg.jpg');
+            background-image: url('images/projects-showcase-bg.jpg');
         }
 
         #section4 .parallax-bg {
-            background-image: url('images/projects-bg.jpg');
+            background-image: url('images/skills-bg.jpg');
         }
 
         #section5 .parallax-bg {
-            background-image: url('images/projects-showcase-bg.jpg');
+            background-image: url('images/projects-bg.jpg');
         }
 
         #section6 .parallax-bg {
@@ -661,48 +676,86 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 50px;
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 1s ease forwards;
             animation-delay: 0.7s;
+            justify-content: center; /* 水平居中 */
         }
 
+        /* 让最后两个项目居中显示 */
+        .projects-grid a:nth-last-child(2) {
+            grid-column: 1 / span 1;
+            margin-left: auto; /* 向右挤 */
+        }
+        .projects-grid a:last-child {
+            grid-column: 2 / span 1;
+            margin-right: auto; /* 向左挤，实际上在3列布局中，只要父容器居中，这里需要配合特定的技巧 */
+        }
+        
+        /* 更通用的最后一行居中方案：使用 Flexbox 或者 Grid 居中技巧 */
+        /* 由于 Grid 布局最后一行居中比较麻烦，我们可以对最后两个元素特殊处理，或者改用 Flex 布局 */
+        /* 这里采用 Grid 布局的特殊处理方式：让最后两个元素偏移 */
+        
+        .projects-grid {
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: center;
+             gap: 20px;
+        }
+        
         .project-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
+            width: calc(33.333% - 14px); /* 3列宽度 (100% / 3 - gap correction) */
+            min-width: 280px; /* 稍微减小最小宽度防止换行过早 */
+            background: rgba(255, 255, 255, 0.05); /* 透明度从 0.08 降低到 0.05 */
+            backdrop-filter: blur(20px) saturate(180%); /* 增强磨砂/雾化效果 */
+            -webkit-backdrop-filter: blur(20px) saturate(180%); /* 兼容 Safari */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* 增加轻微边框增强立体感 */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* 增加阴影增强层次感 */
             border-radius: 15px;
-            padding: 25px 30px;
+            padding: 30px 20px; /* 增加垂直padding */
             transition: all 0.3s;
             cursor: pointer;
             display: flex;
+            flex-direction: column; /* 垂直排列 */
             align-items: center;
-            gap: 20px;
+            justify-content: space-between; /* 内容分散对齐 */
+            gap: 15px;
             text-decoration: none;
             color: #fff;
+            box-sizing: border-box;
+            flex-grow: 0;
+            height: auto; /* 高度自适应 */
+            min-height: 200px; /* 设置最小高度确保统一 */
         }
 
         .project-card:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1); /* hover 时也相应降低透明度 */
             transform: translateY(-5px);
         }
 
         .project-card h3 {
-            font-size: 1.3em;
+            font-size: 1.6em; /* 字体从 1.4em 增大到 1.6em */
             margin: 0;
             color: #fff;
-            white-space: nowrap;
+            white-space: normal; /* 允许换行 */
+            text-align: center;
+            line-height: 1.4;
         }
 
         .project-card p {
-            font-size: 0.9em;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
             margin: 0;
-            white-space: nowrap;
+            white-space: normal; /* 允许换行 */
             flex: 1;
             text-align: center;
+            line-height: 1.6;
+            display: flex;
+            align-items: center; /* 垂直居中文字 */
         }
 
         .project-card .view-btn {
@@ -1050,8 +1103,8 @@
                 min-height: auto;
             }
             
-            /* 修复 Section 4 高度问题 */
-            #section4 {
+            /* 修复 Section 5 高度问题 */
+            #section5 {
                 height: auto !important;
                 padding-bottom: 50px;
             }
@@ -1211,12 +1264,18 @@
             }
 
             /* 项目卡片 */
+            .projects-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
             .project-card {
                 flex-direction: column;
                 text-align: center;
                 padding: 25px;
                 gap: 15px;
                 height: auto;
+                width: 100%; /* 移动端占满宽度 */
             }
             .project-card h3 {
                 white-space: normal;
@@ -1319,9 +1378,9 @@
             <a href="#section1" class="logo">IVAN</a>
             <a href="#section1">首页</a>
             <a href="#section2">关于</a>
-            <a href="#section3">教育</a>
-            <a href="#section4">职业</a>
-            <a href="#section5">项目</a>
+            <a href="#section3">项目</a>
+            <a href="#section4">教育</a>
+            <a href="#section5">职业</a>
             <a href="#section6">技能</a>
             <a href="#section7">联系</a>
         </div>
@@ -1381,6 +1440,42 @@
     </section>
 
     <section id="section3">
+        <div class="parallax-bg"></div>
+        <div class="overlay"></div>
+        <div class="content">
+            <h2>我的项目</h2>
+            <p>将理论与实践结合，创造价值</p>
+            <div class="projects-grid">
+                <a href="projects/web-development.html" class="project-card">
+                    <h3>网页产品开发</h3>
+                    <p>结合市场调研和数据分析,开发完整的Web应用产品</p>
+                    <span class="view-btn">查看详情</span>
+                </a>
+                <a href="projects/marketing-strategy.html" class="project-card">
+                    <h3>市场策划</h3>
+                    <p>为客户品牌制定整合营销策略，和可落地的执行方案，提升品牌价值</p>
+                    <span class="view-btn">查看详情</span>
+                </a>
+                <a href="projects/data-visualization.html" class="project-card">
+                    <h3>数据分析与可视化</h3>
+                    <p>运用Python、R等工具进行数据挖掘 基于Tableau和pyecharts等工具制作可视化数据分析产品</p>
+                    <span class="view-btn">查看详情</span>
+                </a>
+                <a href="projects/visual-design.html" class="project-card">
+                    <h3>视觉设计</h3>
+                    <p>利用秀米、Canvas等平面设计工具 平衡用户体验和美学的界面设计</p>
+                    <span class="view-btn">查看详情</span>
+                </a>
+                <a href="projects/news-review.html" class="project-card">
+                    <h3>新闻/评论</h3>
+                    <p>基于理解和深刻洞察 撰写深度报道和评论文章</p>
+                    <span class="view-btn">查看详情</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="section4">
         <div class="parallax-bg"></div>
         <div class="overlay"></div>
         <div class="content">
@@ -1458,7 +1553,7 @@
         </div>
     </section>
 
-    <section id="section4">
+    <section id="section5">
         <div class="parallax-bg"></div>
         <div class="overlay"></div>
         <div class="content">
@@ -1515,42 +1610,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="section5">
-        <div class="parallax-bg"></div>
-        <div class="overlay"></div>
-        <div class="content">
-            <h2>我的项目</h2>
-            <p>将理论与实践结合，创造价值</p>
-            <div class="projects-grid">
-                <a href="projects/web-development.html" class="project-card">
-                    <h3>网页产品开发</h3>
-                    <p>结合市场调研和数据分析,开发完整的Web应用产品</p>
-                    <span class="view-btn">查看详情</span>
-                </a>
-                <a href="projects/marketing-strategy.html" class="project-card">
-                    <h3>市场策划</h3>
-                    <p>为客户品牌制定整合营销策略，和可落地的执行方案，提升品牌价值</p>
-                    <span class="view-btn">查看详情</span>
-                </a>
-                <a href="projects/data-visualization.html" class="project-card">
-                    <h3>数据分析与可视化</h3>
-                    <p>运用Python、R等工具进行数据挖掘 基于Tableau和pyecharts等工具制作可视化数据分析产品</p>
-                    <span class="view-btn">查看详情</span>
-                </a>
-                <a href="projects/visual-design.html" class="project-card">
-                    <h3>视觉设计</h3>
-                    <p>利用秀米、Canvas等平面设计工具 平衡用户体验和美学的界面设计</p>
-                    <span class="view-btn">查看详情</span>
-                </a>
-                <a href="projects/news-review.html" class="project-card">
-                    <h3>新闻/评论</h3>
-                    <p>基于理解和深刻洞察 撰写深度报道和评论文章</p>
-                    <span class="view-btn">查看详情</span>
-                </a>
             </div>
         </div>
     </section>
@@ -1877,7 +1936,7 @@
 
         // 横向滚动证书功能
         const certificatesGrid = document.querySelector('.certificates-grid');
-        const educationSection = document.querySelector('#section3');
+        const educationSection = document.querySelector('#section4');
         
         if (certificatesGrid && educationSection) {
             let isHorizontalScrollActive = false;
