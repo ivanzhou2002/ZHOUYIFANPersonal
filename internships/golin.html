@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高诚公关 - 实习经历 | 周奕帆</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background: #000; min-height: 100vh; color: #fff; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; padding-top: 40px; }
+        .back-btn { display: inline-block; padding: 12px 30px; background: rgba(255, 255, 255, 0.2); border-radius: 25px; color: #fff; text-decoration: none; font-size: 1em; margin-bottom: 40px; transition: all 0.3s; }
+        .back-btn:hover { background: rgba(255, 255, 255, 0.3); transform: translateX(-5px); }
+        .header { display: flex; align-items: center; gap: 30px; margin-bottom: 40px; }
+        .header img { width: 120px; height: 120px; object-fit: contain; background: #fff; border-radius: 15px; padding: 10px; }
+        .header-info h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header-info p { font-size: 1.2em; color: rgba(255, 255, 255, 0.8); margin-bottom: 5px; }
+        
+        .content-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 40px; margin-bottom: 40px; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .content-card h3 { font-size: 1.8em; margin-bottom: 25px; border-bottom: 2px solid rgba(255, 255, 255, 0.2); padding-bottom: 15px; grid-column: 1 / -1; }
+        
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .work-list { list-style: none; }
+        .work-list li { font-size: 1.1em; line-height: 1.8; margin-bottom: 15px; position: relative; padding-left: 25px; color: rgba(255, 255, 255, 0.9); }
+        .work-list li::before { content: '•'; color: rgba(255, 255, 255, 0.5); position: absolute; left: 0; font-size: 1.5em; top: -2px; }
+        
+        .photo-gallery img { width: 100%; border-radius: 15px; object-fit: cover; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+        
+        @media (max-width: 768px) {
+            .header { flex-direction: column; text-align: center; }
+            .header-info h1 { font-size: 2em; }
+            .content-card { padding: 25px; }
+            .layout-grid { grid-template-columns: 1fr; }
+            .photo-gallery img { max-width: 100%; margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html#section5" class="back-btn">← 返回主页</a>
+        
+        <div class="header">
+            <img src="../images/实习/高诚公关.webp" alt="高诚公关 Logo">
+            <div class="header-info">
+                <h1>高诚公关 (Golin) - 埃培智市场咨询</h1>
+                <p>企业传播/公关组 | 北京/中国</p>
+                <p>2025.04 - 2025.07</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3>工作内容与职责</h3>
+            <div class="layout-grid">
+                <ul class="work-list">
+                    <li>服务世界知名航空公司，汽车制造公司等国际品牌，统筹企业公关与社交媒体整合营销</li>
+                    <li>利用Vibe Coding技术开发基于Excel的自动化邮件生成工具，减少团队重复处理流程</li>
+                    <li>负责全球新闻稿的本地化改编与对外发布，独立产出微信内容并协助运营微博、小红书等社交平台</li>
+                    <li>承担KOL合作筛选与项目执行支持，参与某摩托制造企业中国区试驾、ITB 2025国际旅游贸易博览会等活动支持</li>
+                </ul>
+                <div class="photo-gallery">
+                    <img src="../intern/golin.jpg" alt="高诚公关工作照片">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
