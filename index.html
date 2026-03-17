@@ -193,60 +193,36 @@
             padding-bottom: 80px;
         }
 
-        #section3 {
-            padding-top: 40px; /* 项目板块让内容从更高位置开始 */
-            padding-bottom: 40px; /* 增加底部padding确保内容不被截断 */
-            height: auto; /* 允许高度自适应 */
-            min-height: 100vh; /* 至少占满一个视口高度 */
-        }
-
-        /* 为长页面专门加一个微调类，确保滚动吸附时顶部不被导航栏遮挡 */
-        .long-section {
-            padding-top: 100px !important;
-        }
-
-        #section5 {
-            height: 100vh !important; /* 强制高度为100vh */
-            overflow: hidden !important; /* 超过底部直接截断 */
-            display: flex;
-            align-items: center; /* 居中对齐 */
-        }
-
         #section2 {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            min-height: 100vh;
+            display: block;
+            padding-top: 120px;
+            padding-bottom: 100vh; /* 减少原来的 160vh，避免过度拉长 */
             background: #000;
             overflow: hidden;
-            margin-bottom: 0;
-            padding: 0;
-        }
-
-        #section2 .parallax-bg {
-            background-image: url('images/about-bg.jpg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center bottom;
-            bottom: -50px;
-            top: auto;
-            height: 100%;
-            opacity: 0;
-            z-index: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        #section2.show-bg .parallax-bg {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            bottom: 0;
+            margin-bottom: 150px; /* 减小间距 */
         }
 
         #section2 .content {
             position: relative;
             margin: 0 auto;
             z-index: 2;
+        }
+
+        #section2 .content.is-fixed {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1200px, calc(100% - 40px));
+        }
+
+        #section2 .content.is-at-bottom {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1200px, calc(100% - 40px));
         }
 
         .parallax-bg {
@@ -321,6 +297,20 @@
             background-image: url('images/hero-bg.jpg');
         }
 
+        #section2 .parallax-bg {
+            background-image: url('images/about-bg.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            bottom: 0;
+            top: auto;
+            height: 0;
+            opacity: 0;
+            z-index: 0;
+            transform: scale(0.9);
+            transform-origin: center bottom;
+        }
+
         #section2 .overlay {
             background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.3) 20px, rgba(0,0,0,0.6) 100%);
             z-index: 1;
@@ -328,7 +318,7 @@
 
         /* 专门加深 Section 3 的蒙版亮度 */
         #section3 .overlay {
-            background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 7%, rgba(0, 0, 0, 0.178) 15%, rgba(0, 0, 0, 0.4) 30%, rgb(0, 0, 0) 60%);
+            background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 7%, rgba(0, 0, 0, 0.178) 15%, rgb(0, 0, 0) 60%);
         }
 
         #section3 .parallax-bg {
@@ -519,36 +509,6 @@
 
         .certificates-grid::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.5);
-        }
-
-        .certificates-container {
-            width: 100%;
-            position: relative;
-        }
-
-        .cert-progress-container {
-            width: 80%;
-            max-width: 600px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            margin: 20px auto 0;
-            cursor: pointer;
-            position: relative;
-            display: block;
-        }
-
-        .cert-progress-bar {
-            height: 100%;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 3px;
-            width: 0%;
-            pointer-events: none;
-            transition: background 0.3s;
-        }
-
-        .cert-progress-container:hover .cert-progress-bar {
-            background: rgba(255, 255, 255, 0.9);
         }
 
         .certificate-card {
@@ -753,20 +713,20 @@
             border: 1px solid rgba(255, 255, 255, 0.1); /* 增加轻微边框增强立体感 */
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* 增加阴影增强层次感 */
             border-radius: 15px;
-            padding: 25px 20px; /* 调整垂直padding */
+            padding: 30px 20px; /* 增加垂直padding */
             transition: all 0.3s;
             cursor: pointer;
             display: flex;
             flex-direction: column; /* 垂直排列 */
             align-items: center;
             justify-content: space-between; /* 内容分散对齐 */
-            gap: 12px; /* 调整内部间距 */
+            gap: 15px;
             text-decoration: none;
             color: #fff;
             box-sizing: border-box;
             flex-grow: 0;
             height: auto; /* 高度自适应 */
-            min-height: 180px; /* 调整最小高度 */
+            min-height: 200px; /* 设置最小高度确保统一 */
         }
 
         .project-card:hover {
@@ -1126,11 +1086,6 @@
             /* 隐藏右侧导航点 */
             .nav-dots {
                 display: none;
-            }
-            
-            /* 隐藏自定义进度条（移动端用原生滚动更顺畅） */
-            .cert-progress-container {
-                display: none !important;
             }
 
             /* Section padding 调整 */
@@ -1493,7 +1448,7 @@
         </div>
     </section>
 
-    <section id="section4" class="long-section">
+    <section id="section4">
         <div class="parallax-bg"></div>
         <div class="overlay"></div>
         <div class="content">
@@ -1523,54 +1478,49 @@
             <div class="certificates-section">
                 <h3>网络学习认证</h3>
                 <p>持续提升专业技能</p>
-                <div class="certificates-container">
-                    <div class="certificates-grid">
-                        <a href="certificates/google-digital-marketing.html" class="certificate-card">
-                            <img src="images/网课/google.png" alt="Google 数字营销和电子商务证书 Logo" class="logo" loading="lazy">
-                            <h4>谷歌 </h4>
-                            <p class="description">数字营销和电子商务</p>
-                            <span class="view-btn">查看证书</span>
-                        </a>
-                        <a href="certificates/google-pm.html" class="certificate-card">
-                            <img src="images/网课/google.png" alt="Google 项目管理证书 Logo" class="logo" loading="lazy">
-                            <h4>谷歌</h4>
-                            <p class="description">项目管理</p>
-                            <span class="view-btn">查看证书</span>
-                        </a>
-                        <a href="certificates/meta-data.html" class="certificate-card">
-                            <img src="images/网课/meta.jpg" alt="Meta 数据分析导论证书 Logo" class="logo" loading="lazy">
-                            <h4>Meta</h4>
-                            <p class="description">数据分析导论</p>
-                            <span class="view-btn">查看证书</span>
-                        </a>
-                        <a href="certificates/penn-marketing.html" class="certificate-card">
-                            <img src="images/网课/沃顿商学院.jpg" alt="宾夕法尼亚大学沃顿商学院 市场营销概论证书 Logo" class="logo" loading="lazy">
-                            <h4>宾夕法尼亚大学沃顿商学院</h4>
-                            <p class="description">市场营销概论 (中文版)</p>
-                            <span class="view-btn">查看证书</span>
-                        </a>
-                        <a href="certificates/coursera-pm.html" class="certificate-card">
-                            <img src="images/网课/corsera.png" alt="Coursera 流程管理证书 Logo" class="logo" loading="lazy">
-                            <h4>Coursera</h4>
-                            <p class="description">流程管理</p>
-                            <span class="view-btn">查看证书</span>
-                        </a>
-                        <a href="certificates/uc-davis-seo.html" class="certificate-card">
-                            <img src="images/网课/UC 戴维斯.png" alt="UC 戴维斯 搜索引擎优化证书 Logo" class="logo" loading="lazy">
-                            <h4>UC 戴维斯 </h4>
-                            <p class="description">搜索引擎优化</p>
-                            <span class="view-btn">查看证书</span>
-                        </a>
-                        <a href="certificates/uci-pr.html" class="certificate-card">
-                            <img src="images/网课/uci.png" alt="UCI 企业公关证书 Logo" class="logo" loading="lazy">
-                            <h4>UCI 企业公关</h4>
-                            <p class="description">企业公关</p>
-                            <span class="view-btn">查看证书</span>
-                        </a>
-                    </div>
-                    <div class="cert-progress-container">
-                        <div class="cert-progress-bar"></div>
-                    </div>
+                <div class="certificates-grid">
+                    <a href="certificates/google-digital-marketing.html" class="certificate-card">
+                        <img src="images/网课/google.png" alt="Google 数字营销和电子商务证书 Logo" class="logo" loading="lazy">
+                        <h4>谷歌 </h4>
+                        <p class="description">数字营销和电子商务</p>
+                        <span class="view-btn">查看证书</span>
+                    </a>
+                    <a href="certificates/google-pm.html" class="certificate-card">
+                        <img src="images/网课/google.png" alt="Google 项目管理证书 Logo" class="logo" loading="lazy">
+                        <h4>谷歌</h4>
+                        <p class="description">项目管理</p>
+                        <span class="view-btn">查看证书</span>
+                    </a>
+                    <a href="certificates/meta-data.html" class="certificate-card">
+                        <img src="images/网课/meta.jpg" alt="Meta 数据分析导论证书 Logo" class="logo" loading="lazy">
+                        <h4>Meta</h4>
+                        <p class="description">数据分析导论</p>
+                        <span class="view-btn">查看证书</span>
+                    </a>
+                    <a href="certificates/penn-marketing.html" class="certificate-card">
+                        <img src="images/网课/沃顿商学院.jpg" alt="宾夕法尼亚大学沃顿商学院 市场营销概论证书 Logo" class="logo" loading="lazy">
+                        <h4>宾夕法尼亚大学沃顿商学院</h4>
+                        <p class="description">市场营销概论 (中文版)</p>
+                        <span class="view-btn">查看证书</span>
+                    </a>
+                    <a href="certificates/coursera-pm.html" class="certificate-card">
+                        <img src="images/网课/corsera.png" alt="Coursera 流程管理证书 Logo" class="logo" loading="lazy">
+                        <h4>Coursera</h4>
+                        <p class="description">流程管理</p>
+                        <span class="view-btn">查看证书</span>
+                    </a>
+                    <a href="certificates/uc-davis-seo.html" class="certificate-card">
+                        <img src="images/网课/UC 戴维斯.png" alt="UC 戴维斯 搜索引擎优化证书 Logo" class="logo" loading="lazy">
+                        <h4>UC 戴维斯 </h4>
+                        <p class="description">搜索引擎优化</p>
+                        <span class="view-btn">查看证书</span>
+                    </a>
+                    <a href="certificates/uci-pr.html" class="certificate-card">
+                        <img src="images/网课/uci.png" alt="UCI 企业公关证书 Logo" class="logo" loading="lazy">
+                        <h4>UCI 企业公关</h4>
+                        <p class="description">企业公关</p>
+                        <span class="view-btn">查看证书</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1610,7 +1560,7 @@
         </div>
     </section>
 
-    <section id="section6" class="long-section">
+    <section id="section6">
         <div class="parallax-bg"></div>
         <div class="overlay"></div>
         <div class="content">
@@ -1785,43 +1735,10 @@
             }
         }
 
-        // 页面加载时恢复滚动位置，并同步 currentStepIndex
+        // 页面加载时恢复滚动位置
         window.addEventListener('load', function() {
             // 延迟执行以确保页面完全加载
-            setTimeout(() => {
-                restoreScrollPosition();
-                
-                // 根据当前滚动位置同步 currentStepIndex
-                if (window.innerWidth > 768) {
-                    let closestIndex = 0;
-                    let minDiff = Infinity;
-                    const scrollY = window.scrollY;
-                    
-                    steps.forEach((step, index) => {
-                        const targetSection = document.querySelector(step.section);
-                        if (targetSection) {
-                            const diff = Math.abs(targetSection.offsetTop - scrollY);
-                            if (diff < minDiff) {
-                                minDiff = diff;
-                                closestIndex = index;
-                            }
-                        }
-                    });
-                    
-                    currentStepIndex = closestIndex;
-                    updateNavActive(steps[currentStepIndex].section);
-                    
-                    // 特殊处理 Section 2 背景状态
-                    const sec2 = document.querySelector('#section2');
-                    if (sec2) {
-                        if (steps[currentStepIndex].section === '#section2' && steps[currentStepIndex].action === 'show-bg') {
-                            sec2.classList.add('show-bg');
-                        } else {
-                            sec2.classList.remove('show-bg');
-                        }
-                    }
-                }
-            }, 100);
+            setTimeout(restoreScrollPosition, 100);
         });
 
         // 页面滚动时保存位置
@@ -1843,321 +1760,112 @@
         const navDots = document.querySelectorAll('.nav-dots a');
         const navbarLinks = document.querySelectorAll('.nav-container a');
 
-        // ----------------------------------------------------
-        // --- Fullpage Scroll Logic (Desktop Only) ---
-        // ----------------------------------------------------
-        let currentStepIndex = 0;
-        let isScrolling = false;
-        let scrollTimeout;
-        let wheelAccumulator = 0; // 累计滚轮增量
-        // const WHEEL_THRESHOLD = 50; // Removed static threshold
-        
-        // ----------------------------------------------------
-        // 防止惯性抖动的锁
-        // ----------------------------------------------------
-        let wheelLock = false; 
-        
-        // 标记长页面内是否已经触发过滚动，用于防止一滑到底直接翻页
-        let hasScrolledWithinLongSection = false;
-        // 标记section4和section6是否已经滚动到底部
-        let sectionsScrolledToBottom = {
-            '#section4': false,
-            '#section6': false
-        };
-        // 为长页面快速滚动添加阈值
-        let quickScrollAccumulator = 0;
-        const QUICK_SCROLL_THRESHOLD = 50; // 快速滚动的阈值
+        const section2 = document.querySelector('#section2');
+        const section2Background = section2 ? section2.querySelector('.parallax-bg') : null;
+        const section2Content = section2 ? section2.querySelector('.content') : null;
+        let section2Placeholder = null;
 
-        const steps = [
-            { section: '#section1', action: 'normal' },
-            { section: '#section2', action: 'normal' },
-            { section: '#section2', action: 'show-bg' },
-            { section: '#section3', action: 'normal' },
-            { section: '#section4', action: 'normal' },
-            { section: '#section5', action: 'normal' },
-            { section: '#section6', action: 'normal' },
-            { section: '#section7', action: 'normal' }
-        ];
+        function updateSection2Background() {
+            if (!section2 || !section2Background || !section2Content) {
+                return;
+            }
 
-        function updateNavActive(targetId) {
+            // 移动端禁用视差滚动和固定效果
+            if (window.innerWidth <= 768) {
+                section2Content.classList.remove('is-fixed');
+                section2Content.classList.remove('is-at-bottom');
+                section2Content.style.top = '';
+                if (section2Placeholder) {
+                    section2Placeholder.style.height = '0px';
+                }
+                section2Background.style.opacity = '1';
+                section2Background.style.height = '100%';
+                return;
+            }
+
+            const sectionTop = section2.offsetTop;
+            const sectionHeight = section2.offsetHeight;
+            const windowHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+            const contentHeight = section2Content.offsetHeight;
+            const contentTop = sectionTop + section2Content.offsetTop;
+            const sectionBottom = sectionTop + sectionHeight;
+
+            const fixedTop = 20;
+            const pinDelay = -30;
+            const pinStart = contentTop - fixedTop + pinDelay;
+            const pinEnd = sectionBottom - windowHeight;
+
+            const revealStart = pinStart;
+            const revealFull = pinStart + (pinEnd - pinStart) * 0.05;
+            const revealRange = Math.max(revealFull - revealStart, 1);
+            const revealProgress = Math.min(Math.max((scrollY - revealStart) / revealRange, 0), 1);
+            const revealHeight = revealProgress * 100;
+
+            if (!section2Placeholder) {
+                section2Placeholder = document.createElement('div');
+                section2Placeholder.style.height = '0px';
+                section2Content.parentNode.insertBefore(section2Placeholder, section2Content);
+            }
+
+            if (scrollY >= pinStart && scrollY <= pinEnd) {
+                section2Content.classList.add('is-fixed');
+                section2Content.classList.remove('is-at-bottom');
+                section2Content.style.top = '';
+                section2Placeholder.style.height = `${contentHeight}px`;
+            } else if (scrollY > pinEnd) {
+                section2Content.classList.remove('is-fixed');
+                section2Content.classList.add('is-at-bottom');
+                section2Content.style.top = `${Math.max(sectionHeight - windowHeight + fixedTop, 0)}px`;
+                section2Placeholder.style.height = `${contentHeight}px`;
+            } else {
+                section2Content.classList.remove('is-fixed');
+                section2Content.classList.remove('is-at-bottom');
+                section2Content.style.top = '';
+                section2Placeholder.style.height = '0px';
+            }
+
+            section2Background.style.opacity = revealProgress.toFixed(3);
+            section2Background.style.height = `${revealHeight.toFixed(2)}%`;
+        }
+        
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(function(section) {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
             navDots.forEach(function(dot) {
                 dot.classList.remove('active');
-                if (dot.getAttribute('href') === targetId) {
+                if (dot.getAttribute('href') === '#' + current) {
                     dot.classList.add('active');
                 }
             });
+            
             navbarLinks.forEach(function(link) {
                 if (!link.classList.contains('logo')) {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === targetId) {
+                    if (link.getAttribute('href') === '#' + current) {
                         link.classList.add('active');
                     }
                 }
             });
-        }
+        });
 
-        function goToStep(index) {
-            if (index < 0 || index >= steps.length) return;
-            
-            // For mobile, just scroll to section natively
-            if (window.innerWidth <= 768) {
-                const targetSection = document.querySelector(steps[index].section);
-                if(targetSection) targetSection.scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
+        window.addEventListener('scroll', updateSection2Background);
+        window.addEventListener('resize', updateSection2Background);
+        updateSection2Background();
 
-            isScrolling = true;
-            
-            // 判断是向下滚还是向上滚
-            const isScrollingDown = index > currentStepIndex;
-            
-            currentStepIndex = index;
-            const step = steps[index];
-            const targetSection = document.querySelector(step.section);
-            
-            // Scroll to target section
-            if(targetSection) {
-                // 如果是往回滚（向上滚），取消这些元素的初始透明状态，让它们直接显示，从而跳过加载动画
-                if (!isScrollingDown) {
-                    const elementsInTarget = targetSection.querySelectorAll('h2, p, .personal-info, .education-grid, .certificates-section, .experience-grid, .projects-grid, .contact-info, .skill-category, .language-skills');
-                    elementsInTarget.forEach(el => {
-                        el.style.animation = 'none';
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                    });
-                }
-                
-                // 对于所有的滚动，我们始终滚动到 section 的最顶部（offsetTop）
-                // 因为导航栏是 fixed 的，如果觉得遮挡，我们在 CSS 中用 padding-top 解决了
-                window.scrollTo({
-                    top: targetSection.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-            
-            // Handle section 2 background animation
-            const sec2 = document.querySelector('#section2');
-            if (sec2) {
-                if (step.section === '#section2' && step.action === 'show-bg') {
-                    sec2.classList.add('show-bg');
-                } else {
-                    sec2.classList.remove('show-bg');
-                }
-            }
-            
-            // 每次切换页面时重置长页面内部滚动标记
-            hasScrolledWithinLongSection = false;
-            // 重置section4和section6的滚动状态
-            sectionsScrolledToBottom['#section4'] = false;
-            sectionsScrolledToBottom['#section6'] = false;
-            // 重置快速滚动累加器
-            quickScrollAccumulator = 0;
-            
-            updateNavActive(step.section);
-            
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                isScrolling = false;
-                wheelAccumulator = 0; // Clear any residual momentum
-            }, 1200); // 增加冷却时间，防止触控板的惯性滚动触发下一次翻页
-        }
-
-        // Wheel event for fullpage snap
-        window.addEventListener('wheel', (e) => {
-            if (window.innerWidth <= 768) return; // Native scroll on mobile
-            
-            // 如果刚翻完页在锁定期间，不仅阻止逻辑，还强行阻止默认滚动，防止抖动
-            if (wheelLock) {
-                e.preventDefault();
-                return;
-            }
-            
-            let isAtBoundaryOfLongSection = false;
-            let isLongSection = false;
-
-            // Allow native scrolling within a section if it's taller than the viewport
-            const currentSection = document.querySelector(steps[currentStepIndex].section);
-            if (currentSection) {
-                // 如果是职业经历板块或项目板块，不作为长页面处理
-                if (currentSection.id === 'section5' || currentSection.id === 'section3') {
-                    // fall through, treat as normal section
-                } else {
-                    const sectionRect = currentSection.getBoundingClientRect();
-                    const atTop = sectionRect.top >= -1;
-                    // 当滚动到长页面最底部时，我们需要更精确地判断，考虑到可能有小数误差
-                    const atBottom = sectionRect.bottom <= window.innerHeight + 5; 
-                    
-                    // 快速滚动section处理逻辑（section4和section6）
-                    if ((currentSection.id === 'section4' || currentSection.id === 'section6') && e.deltaY > 0) {
-                        if (!sectionsScrolledToBottom[steps[currentStepIndex].section]) {
-                            // 累加滚轮值
-                            quickScrollAccumulator += e.deltaY;
-                            // 只有超过阈值才触发快速滚动到底部
-                            if (quickScrollAccumulator > QUICK_SCROLL_THRESHOLD) {
-                                e.preventDefault();
-                                window.scrollTo({
-                                    top: currentSection.offsetTop + currentSection.offsetHeight - window.innerHeight,
-                                    behavior: 'smooth'
-                                });
-                                sectionsScrolledToBottom[steps[currentStepIndex].section] = true;
-                                quickScrollAccumulator = 0; // 重置累加器
-                                return;
-                            }
-                            // 缓慢衰减累加器，防止无意间的小幅度滚动随时间累积
-                            setTimeout(() => {
-                                quickScrollAccumulator = quickScrollAccumulator * 0.8;
-                            }, 100);
-                            return;
-                        }
-                    }
-                    
-                    // 快速滚动section向上滚：回到顶部
-                    if ((currentSection.id === 'section4' || currentSection.id === 'section6') && e.deltaY < 0) {
-                        if (sectionsScrolledToBottom[steps[currentStepIndex].section]) {
-                            // 累加滚轮值（取绝对值）
-                            quickScrollAccumulator += Math.abs(e.deltaY);
-                            // 只有超过阈值才触发快速滚动到顶部
-                            if (quickScrollAccumulator > QUICK_SCROLL_THRESHOLD) {
-                                e.preventDefault();
-                                window.scrollTo({
-                                    top: currentSection.offsetTop,
-                                    behavior: 'smooth'
-                                });
-                                sectionsScrolledToBottom[steps[currentStepIndex].section] = false;
-                                quickScrollAccumulator = 0; // 重置累加器
-                                return;
-                            }
-                            // 缓慢衰减累加器，防止无意间的小幅度滚动随时间累积
-                            setTimeout(() => {
-                                quickScrollAccumulator = quickScrollAccumulator * 0.8;
-                            }, 100);
-                            return;
-                        }
-                    }
-                    
-                    // If the section is taller than viewport
-                    if (currentSection.offsetHeight > window.innerHeight) {
-                        isLongSection = true;
-                        if (e.deltaY > 0 && !atBottom) {
-                            hasScrolledWithinLongSection = true; // 标记我们在内部发生了滚动
-                            return; // Scrolling down inside section
-                        }
-                        if (e.deltaY < 0 && !atTop) {
-                            hasScrolledWithinLongSection = true; // 标记我们在内部发生了滚动
-                            return; // Scrolling up inside section
-                        }
-                        
-                        // We are at the boundary of a long section, intending to leave it
-                        // 关键逻辑：如果是从长页面内部滑到底部，即使这一次滑动的力度很大（跨越了边界），
-                        // 也应该被阻断，停留在边界。必须要求用户在到达边界后，发起一次全新的滚动才能翻页。
-                        if (hasScrolledWithinLongSection) {
-                            // 吸收掉当前的剩余滚动量，防止直接翻页，并重置累加器
-                            e.preventDefault();
-                            wheelAccumulator = 0;
-                            // 将标记设为 false，意味着现在真正处于边界且准备好接受下一次独立的翻页指令
-                            hasScrolledWithinLongSection = false; 
-                            
-                            // 加个短暂的锁防止连续惯性
-                            wheelLock = true;
-                            setTimeout(() => { wheelLock = false; }, 300);
-                            return;
-                        }
-
-                        isAtBoundaryOfLongSection = true;
-                    }
-                }
-            }
-
-            e.preventDefault(); // Only prevent default when we intend to snap
-            
-            if (isScrolling) return;
-
-            // 往回滚（向上滚）时的优化
-            if (e.deltaY < 0) {
-                // 如果当前页面已经在最顶部了，准备翻页时
-                if (!isLongSection || (isLongSection && isAtBoundaryOfLongSection)) {
-                    // 向上翻页不需要防误触的累加等待，直接翻页，这样就不会觉得卡顿了
-                    e.preventDefault();
-                    goToStep(currentStepIndex - 1);
-                    
-                    // 开启物理滚动锁
-                    wheelLock = true;
-                    setTimeout(() => { wheelLock = false; }, 800);
-                    return;
-                }
-            }
-
-            // Accumulate wheel delta to prevent ultra-sensitive triggers (e.g. magic mouse/trackpad)
-            wheelAccumulator += e.deltaY;
-
-            // 动态阈值：如果是长页面到达边界准备翻页，阈值变大防止误触；如果是普通短页面，阈值也适当增大防止误触
-            // 为教育和项目等可能不是非常长但也需要防误触的页面，基础阈值从 30 提高到 80
-            const currentThreshold = isAtBoundaryOfLongSection ? 200 : 80;
-
-            if (Math.abs(wheelAccumulator) > currentThreshold) {
-                if (wheelAccumulator > 0) {
-                    goToStep(currentStepIndex + 1);
-                } 
-                // 向上翻页的逻辑已经移到上面单独处理了，所以这里只处理向下翻页
-                wheelAccumulator = 0; // Reset accumulator after triggering
-                
-                // 开启物理滚动锁，防止翻页后的惯性导致页面上下抖动
-                wheelLock = true;
-                setTimeout(() => {
-                    wheelLock = false;
-                }, 1000); // 锁定 1 秒
-                
-            } else {
-                // 如果没有触发翻页，缓慢衰减累加器，防止无意间的小幅度滚动随时间累积
-                setTimeout(() => {
-                    wheelAccumulator = wheelAccumulator * 0.5;
-                }, 100);
-            }
-        }, { passive: false });
-
-        // Keyboard event for fullpage snap
-        window.addEventListener('keydown', (e) => {
-            if (window.innerWidth <= 768) return;
-            
-            if (isScrolling) {
-                if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' '].includes(e.key)) {
-                    e.preventDefault();
-                }
-                return;
-            }
-            
-            if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
-                e.preventDefault();
-                goToStep(currentStepIndex + 1);
-            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-                e.preventDefault();
-                goToStep(currentStepIndex - 1);
-            }
-        }, { passive: false });
-        
-        // Hide native scrollbar on desktop for cleaner snap look
-        const style = document.createElement('style');
-        style.textContent = `
-            @media (min-width: 769px) {
-                /* Removed overflow: hidden so individual sections can scroll if taller than 100vh */
-                /* body::-webkit-scrollbar { display: none; } */
-                /* body { -ms-overflow-style: none; scrollbar-width: none; } */
-                .certificates-grid::-webkit-scrollbar { display: none; }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Update nav click handlers
         navDots.forEach(function(dot) {
             dot.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = dot.getAttribute('href');
-                if (window.innerWidth > 768) {
-                    const stepIndex = steps.findIndex(s => s.section === targetId);
-                    if (stepIndex !== -1) goToStep(stepIndex);
-                } else {
-                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-                }
+                const targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
@@ -2166,94 +1874,69 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = link.getAttribute('href');
-                    if (window.innerWidth > 768) {
-                        const stepIndex = steps.findIndex(s => s.section === targetId);
-                        if (stepIndex !== -1) goToStep(stepIndex);
-                    } else {
-                        document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-                    }
+                    const targetSection = document.querySelector(targetId);
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
                 });
             }
         });
 
-        // ----------------------------------------------------
-        // --- Certificates Auto Scroll & Progress Bar ---
-        // ----------------------------------------------------
-        const certGrid = document.querySelector('.certificates-grid');
-        const certProgressContainer = document.querySelector('.cert-progress-container');
-        const certProgressBar = document.querySelector('.cert-progress-bar');
+        // 横向滚动证书功能
+        const certificatesGrid = document.querySelector('.certificates-grid');
+        const educationSection = document.querySelector('#section4');
         
-        if (certGrid && certProgressContainer && certProgressBar) {
-            let autoScrollReq;
-            let isDraggingCert = false;
-            const scrollSpeed = 0.5; // pixels per frame
+        if (certificatesGrid && educationSection) {
+            let isHorizontalScrollActive = false;
             
-            function updateCertProgress() {
-                if (!certGrid.scrollWidth) return;
-                const maxScroll = certGrid.scrollWidth - certGrid.clientWidth;
-                if (maxScroll <= 0) {
-                    certProgressBar.style.width = '100%';
-                    return;
-                }
-                const percentage = (certGrid.scrollLeft / maxScroll) * 100;
-                certProgressBar.style.width = `${percentage}%`;
-            }
-
-            function autoScrollCert() {
-                if (!isDraggingCert && window.innerWidth > 768) {
-                    const maxScroll = certGrid.scrollWidth - certGrid.clientWidth;
-                    if (maxScroll > 0) {
-                        certGrid.scrollLeft += scrollSpeed;
-                        if (certGrid.scrollLeft >= maxScroll - 1) {
-                            certGrid.scrollLeft = 0; // Loop back
+            educationSection.addEventListener('wheel', function(e) {
+                const sectionRect = educationSection.getBoundingClientRect();
+                const gridRect = certificatesGrid.getBoundingClientRect();
+                
+                // 检查是否在证书区域
+                const isInCertificatesArea = (
+                    e.clientY >= gridRect.top &&
+                    e.clientY <= gridRect.bottom &&
+                    e.clientX >= gridRect.left &&
+                    e.clientX <= gridRect.right
+                );
+                
+                if (isInCertificatesArea) {
+                    // 检查是否已经滚动到最右端
+                    const maxScroll = certificatesGrid.scrollWidth - certificatesGrid.clientWidth;
+                    const isAtEnd = Math.abs(certificatesGrid.scrollLeft - maxScroll) < 10;
+                    const isAtStart = certificatesGrid.scrollLeft < 10;
+                    
+                    if (!isHorizontalScrollActive && !isAtEnd) {
+                        // 还没有开始横向滚动，且不在最右端
+                        e.preventDefault();
+                        certificatesGrid.scrollLeft += e.deltaY;
+                    } else if (isAtEnd && e.deltaY < 0) {
+                        // 在最右端但用户向上滚动，允许纵向滚动
+                        isHorizontalScrollActive = false;
+                    } else if (isAtStart && e.deltaY > 0) {
+                        // 在最左端但用户向下滚动，开始横向滚动
+                        e.preventDefault();
+                        certificatesGrid.scrollLeft += e.deltaY;
+                        isHorizontalScrollActive = true;
+                    } else if (isHorizontalScrollActive) {
+                        // 已经在横向滚动模式
+                        e.preventDefault();
+                        certificatesGrid.scrollLeft += e.deltaY;
+                        
+                        // 检查是否滚动到边缘
+                        if (isAtEnd || isAtStart) {
+                            isHorizontalScrollActive = false;
                         }
-                        updateCertProgress();
+                    } else {
+                        // 不在边缘，开始横向滚动
+                        e.preventDefault();
+                        certificatesGrid.scrollLeft += e.deltaY;
+                        isHorizontalScrollActive = true;
                     }
+                } else {
+                    // 不在证书区域，重置状态
+                    isHorizontalScrollActive = false;
                 }
-                autoScrollReq = requestAnimationFrame(autoScrollCert);
-            }
-            
-            // Start auto scroll
-            autoScrollReq = requestAnimationFrame(autoScrollCert);
-            
-            // Pause on hover
-            certGrid.addEventListener('mouseenter', () => cancelAnimationFrame(autoScrollReq));
-            certGrid.addEventListener('mouseleave', () => {
-                if (!isDraggingCert) autoScrollReq = requestAnimationFrame(autoScrollCert);
-            });
-            
-            // Native scroll update
-            certGrid.addEventListener('scroll', () => {
-                if (!isDraggingCert) updateCertProgress();
-            });
-
-            // Progress bar interaction
-            function setCertProgress(e) {
-                const rect = certProgressContainer.getBoundingClientRect();
-                let x = e.clientX - rect.left;
-                x = Math.max(0, Math.min(x, rect.width));
-                const percentage = x / rect.width;
-                const maxScroll = certGrid.scrollWidth - certGrid.clientWidth;
-                certGrid.scrollLeft = percentage * maxScroll;
-                updateCertProgress();
-            }
-
-            certProgressContainer.addEventListener('mousedown', (e) => {
-                isDraggingCert = true;
-                cancelAnimationFrame(autoScrollReq);
-                setCertProgress(e);
-            });
-
-            window.addEventListener('mousemove', (e) => {
-                if (isDraggingCert) setCertProgress(e);
-            });
-
-            window.addEventListener('mouseup', () => {
-                if (isDraggingCert) {
-                    isDraggingCert = false;
-                    autoScrollReq = requestAnimationFrame(autoScrollCert);
-                }
-            });
+            }, { passive: false });
         }
 
         // 专门为h1添加滚动触发动画
@@ -2303,11 +1986,11 @@
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 1.5s ease forwards';
-                    // 不再 unobserve，而是保留观察，但动画触发后就不再重置
+                    headerObserver.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.1 // 降低阈值
+            threshold: 0.3 // 当元素30%进入视口时触发
         });
         
         // 观察所有section的h2
@@ -2324,10 +2007,11 @@
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 1.5s ease forwards';
+                    descriptionObserver.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.1 // 降低阈值
+            threshold: 0.3 // 当元素30%进入视口时触发
         });
         
         // 观察所有section下方的所有p标签
@@ -2360,10 +2044,11 @@
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 1s ease forwards';
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.15 // 降低阈值，更快触发
+            threshold: 0.45 // 当元素45%进入视口时触发
         });
         
         // 观察所有需要动画的元素
