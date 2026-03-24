@@ -56,7 +56,8 @@
         }
 
         .projects-list {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 30px;
             margin-bottom: 40px;
         }
@@ -68,6 +69,14 @@
             padding: 40px;
             transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+        }
+
+        .projects-grid-2-col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
         }
 
         .project-item:hover {
@@ -76,10 +85,19 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
-        .project-item h3 {
-            font-size: 1.8em;
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 15px;
+            gap: 20px;
+        }
+
+        .project-header h3 {
+            font-size: 1.8em;
             color: #fff;
+            margin-bottom: 0;
+            line-height: 1.4;
         }
 
         .project-item .role {
@@ -117,6 +135,93 @@
             margin-right: 10px;
             margin-bottom: 10px;
             font-size: 0.9em;
+        }
+
+        .project-images {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-images img {
+            max-width: 100%;
+            border-radius: 10px;
+            max-height: 400px;
+            object-fit: contain;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .project-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .list-section h2 {
+            font-size: 2em;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .link-list {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .link-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .link-item h4 {
+            font-size: 1.1em;
+            color: #fff;
+            margin-right: 20px;
+            font-weight: normal;
+            line-height: 1.5;
+        }
+
+        .link-item a {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 8px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            white-space: nowrap;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+
+        .link-item a:hover {
+            background: #4a90e2;
         }
 
         .skills-section {
@@ -172,6 +277,13 @@
             .project-item {
                 padding: 25px;
             }
+            .projects-grid-2-col {
+                grid-template-columns: 1fr;
+            }
+            .project-header {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -187,82 +299,134 @@
 
         <div class="projects-list">
             <div class="project-item">
-                <h3>郑州暴雨专题报道</h3>
-                <p class="role">实习记者 | 深度报道</p>
+                <div class="project-header">
+                    <h3>第七届中国数据新闻大赛作品——”双碳目标下的电力之困“</h3>
+                </div>
                 <p class="description">
-                    参与郑州暴雨灾害的专题报道采访工作，深入一线收集素材。
-                    产出多篇新闻作品，及时传递灾情信息和救援进展，展现了媒体人的责任与担当。
+                    2020年9月，中国在第75届联合国大会上提出2030年前实现碳达峰、2060年前实现碳中和（简称“双碳”目标）。随后，“双碳”被迅速上升为国家发展全局性战略，并在2021年写入一系列顶层设计文件。在政策目标快速推进的同时，中国电力系统在2021—2022年经历了明显的现实冲突期，一方面，新能源（风电、光伏）装机容量快速增长，另一方面，电力系统稳定性和调峰能力不足。2021年下半年，中国部分地区（如东北、华东部分省份）出现阶段性电力供应紧张与限电现象，成为社会高度关注的公共议题。
                 </p>
-                <div class="tech-stack">
-                    <strong>关键能力：</strong>
-                    <span>深度采访</span>
-                    <span>现场报道</span>
-                    <span>新闻写作</span>
-                    <span>事实核查</span>
+                <div class="project-images">
+                    <img src="新闻评论/1.jpg" alt="1.jpg">
+                    <img src="新闻评论/2.jpg" alt="2.jpg">
                 </div>
             </div>
 
             <div class="project-item">
-                <h3>东京夏季奥运会报道</h3>
-                <p class="role">实习记者 | 体育新闻</p>
+                <div class="project-header">
+                    <h3>电竞登堂之后：电竞幕后的人才之路</h3>
+                    <a href="https://www.bilibili.com/video/BV1kY411N7yv/?spm_id_from=333.999.0.0" class="project-link" target="_blank">查看链接</a>
+                </div>
                 <p class="description">
-                    参与东京夏季奥运会期间的相关报道工作，关注运动员表现和赛事热点。
-                    通过多角度的报道，为读者呈现奥运会的精彩瞬间和背后的故事。
+                    近年来，电子竞技正从一种被贴上“游戏”“娱乐”标签的亚文化，逐步走向主流公众视野。从2018年雅加达亚运会的表演项目，到2023年杭州亚运会成为正式奖牌项目，电子竞技首次被纳入国家综合性体育赛事体系，这一转变不仅意味着电竞在竞技层面的“正名”，也深刻影响着社会对电竞的整体认知结构。然而，与政策认可和赛事升级并行的，是社会层面长期存在的分歧，在部分人眼中，电竞是职业化、规范化的新型体育项目；而在另一部分人看来，它依然与沉迷、逃避现实、青少年问题紧密相连。在这样的背景下，本节目以“电竞入亚”为切入点，聚焦电子竞技在当代社会中的真实处境与多重认知。节目采访了电竞学校、职业电竞教练及相关从业者，深入电竞教育与职业训练一线，呈现电竞选手的培养方式、训练强度与职业路径，试图打破公众对电竞“只是一种游戏”的刻板印象。
                 </p>
-                <div class="tech-stack">
-                    <strong>关键能力：</strong>
-                    <span>体育新闻</span>
-                    <span>赛事报道</span>
-                    <span>人物专访</span>
-                    <span>新闻策划</span>
+                <div class="project-images">
+                    <img src="新闻评论/3.png" alt="3.png">
                 </div>
             </div>
 
-            <div class="project-item">
-                <h3>"江西之声"公众号运营</h3>
-                <p class="role">新媒体运营 | 内容创作</p>
-                <p class="description">
-                    运营"江西之声"官方微信公众号，发布原创推文20余篇。
-                    结合热点话题和本地特色，创作有深度、有温度的新闻内容，提升账号影响力。
-                </p>
-                <div class="tech-stack">
-                    <strong>关键能力：</strong>
-                    <span>新媒体运营</span>
-                    <span>内容策划</span>
-                    <span>公众号管理</span>
-                    <span>粉丝互动</span>
+            <div class="projects-grid-2-col">
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>“山寨鸡汤”该休矣</h3>
+                        <a href="https://hlj.rednet.cn/content/2022/10/20/11959083.html" class="project-link" target="_blank">查看链接</a>
+                    </div>
+                    <div class="project-images">
+                        <img src="新闻评论/4.png" alt="4.png">
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>“骑行热”：追求美好生活的新表达</h3>
+                        <a href="https://hlj.rednet.cn/content/2022/10/25/11977774.html" class="project-link" target="_blank">查看链接</a>
+                    </div>
+                    <div class="project-images">
+                        <img src="新闻评论/5.png" alt="5.png">
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>团购抗原有风险，切勿轻信自媒体微商</h3>
+                        <a href="https://hlj.rednet.cn/content/646656/60/12179010.html" class="project-link" target="_blank">查看链接</a>
+                    </div>
+                    <div class="project-images">
+                        <img src="新闻评论/6.png" alt="6.png">
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>飞天起航圆梦九霄</h3>
+                        <a href="https://news.cqnews.net/1/detail/1049451813063974912/web/content_1049451813063974912.html" class="project-link" target="_blank">查看链接</a>
+                    </div>
+                    <div class="project-images">
+                        <img src="新闻评论/7.png" alt="7.png">
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="project-item">
-                <h3>"江西新闻广播"抖音短视频创作</h3>
-                <p class="role">短视频创作者 | 视频新闻</p>
-                <p class="description">
-                    运营"江西新闻广播"抖音账号，发布短视频作品5条，累计获赞2000+。
-                    将传统新闻内容转化为短视频形式，适应新媒体传播特点，扩大传播范围。
-                </p>
-                <div class="tech-stack">
-                    <strong>关键能力：</strong>
-                    <span>短视频制作</span>
-                    <span>视频剪辑</span>
-                    <span>新闻可视化</span>
-                    <span>流量运营</span>
+        <div class="list-section">
+            <h2>消息视频</h2>
+            <div class="link-list">
+                <div class="link-item">
+                    <h4>江西：早稻开镰收割 机械化仍唱主角</h4>
+                    <a href="https://v.douyin.com/i85oX9eX/" target="_blank">播放视频</a>
+                </div>
+                <div class="link-item">
+                    <h4>“舅妈”加油 ！ 江西奥运选手徐诗晓意外火上网络</h4>
+                    <a href="https://v.douyin.com/i85oupM8/" target="_blank">播放视频</a>
+                </div>
+                <div class="link-item">
+                    <h4>萍莲高速主线全面贯通</h4>
+                    <a href="https://v.douyin.com/i85oDmtp/" target="_blank">播放视频</a>
+                </div>
+                <div class="link-item">
+                    <h4>暑期到了！专家建议： 女超18岁男超20岁才能做近视手术</h4>
+                    <a href="https://v.douyin.com/i85oyoTL/" target="_blank">播放视频</a>
+                </div>
+                <div class="link-item">
+                    <h4>成功“换肺”！江西首例肺移植手术11日顺利实施</h4>
+                    <a href="https://v.douyin.com/i85ofEt3/" target="_blank">播放视频</a>
                 </div>
             </div>
+        </div>
 
-            <div class="project-item">
-                <h3>新闻评论文章创作</h3>
-                <p class="role">评论员 | 时事评论</p>
-                <p class="description">
-                    基于新闻学专业背景，撰写多篇时政和社会热点的评论文章。
-                    以独特的视角分析事件背后的深层逻辑，为读者提供有价值的观点和思考。
-                </p>
-                <div class="tech-stack">
-                    <strong>关键能力：</strong>
-                    <span>评论写作</span>
-                    <span>时政分析</span>
-                    <span>观点提炼</span>
-                    <span>逻辑思维</span>
+        <div class="list-section">
+            <h2>新闻消息</h2>
+            <div class="link-list">
+                <div class="link-item">
+                    <h4>河南挺住！江西与你们一起扛！</h4>
+                    <a href="https://mp.weixin.qq.com/s/6IZlsEOJS8AML652FSC9fg" target="_blank">阅读全文</a>
+                </div>
+                <div class="link-item">
+                    <h4>相约云间 | 2021世界VR产业大会云峰会即将遇见</h4>
+                    <a href="https://mp.weixin.qq.com/s/sOwtAxAMyR6ahsfQ-_VmAA" target="_blank">阅读全文</a>
+                </div>
+                <div class="link-item">
+                    <h4>权威发布|江西省2021年高招一本投档情况公布</h4>
+                    <a href="https://mp.weixin.qq.com/s/E0gjhYyfdcVTCGXgfmWgQw" target="_blank">阅读全文</a>
+                </div>
+                <div class="link-item">
+                    <h4>新闻晚报 | 东京奥运会开幕倒计时3天 关注“00后”小将</h4>
+                    <a href="https://mp.weixin.qq.com/s/YuOK8fVrMUgu38lyHy0ZHw" target="_blank">阅读全文</a>
+                </div>
+                <div class="link-item">
+                    <h4>江西省人才服务有限公司选聘见习生公告</h4>
+                    <a href="https://mp.weixin.qq.com/s/W_diqseZBsruS9jj6x4ZBw" target="_blank">阅读全文</a>
+                </div>
+                <div class="link-item">
+                    <h4>江西省农业信贷融资担保有限公司2023年公开招聘工作人员公告</h4>
+                    <a href="https://mp.weixin.qq.com/s/ycA3-mIKP1ookZkcoqfMlg" target="_blank">阅读全文</a>
+                </div>
+                <div class="link-item">
+                    <h4>新闻晚报｜全球多国“旱灾”严重，中国粮食安全有保障</h4>
+                    <a href="https://new.qq.com/rain/a/20210719A0BFF800" target="_blank">阅读全文</a>
+                </div>
+                <div class="link-item">
+                    <h4>光明网：江西省2021年高招国家专项计划本科录取情况（附投档分数线）</h4>
+                    <a href="https://m.gmw.cn/2021-07/13/content_1302404027.htm?source=sohu?source=sohu" target="_blank">阅读全文</a>
                 </div>
             </div>
         </div>
